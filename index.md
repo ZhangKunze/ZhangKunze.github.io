@@ -24,3 +24,8 @@ My Codeberg: https://codeberg.org/ZKZLLPPAM
 
 This is test.
 
+
+
+
+© Copyright 2026 Zhang Kunze.
+This website is on GitHub.
