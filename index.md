@@ -34,9 +34,11 @@ About: <a href="https://zhangkunze.github.io/about">https://zhangkunze.github.io
 My repo:
 
 Zhang.bash: A not good bash script version 1.0.
+
 Zhang.bash-v(version): A good bash script.
 
 nvidia-art: A sarcasm NVIDIA Bash Script and a C Language file repo.
+
 teacher-art: Our teacher is bad, the homework is very much. That like "nvidia-art".
 
 about_ai: A repo of AI. It say: "AI plagiarism our code or text, we do this…".
