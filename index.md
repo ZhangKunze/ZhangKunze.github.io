@@ -29,6 +29,7 @@ My Codeberg: <a href="https://codeberg.org/ZKZLLPPAM">https://codeberg.org/ZKZLL
 
 About: <a href="https://zhangkunze.github.io/about">https://zhangkunze.github.io/about</a>
 
+[Download My Resource Pack](https://zhangkunze.github.io/minecraft/resource-pack.mcpack)
 
 My repo:
 
