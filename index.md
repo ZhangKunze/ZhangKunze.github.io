@@ -27,6 +27,8 @@ My GitHub: <a href="https://github.com/ZhangKunze">https://github.com/ZhangKunze
 
 My Codeberg: <a href="https://codeberg.org/ZKZLLPPAM">https://codeberg.org/ZKZLLPPAM</a>
 
+About: <a href="https://zhangkunze.github.io/about">https://zhangkunze.github.io/about</a>
+
 This is test.
 
 © Copyright 2026 Zhang Kunze. This website is on GitHub.
