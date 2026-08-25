@@ -6,6 +6,7 @@ layout: default
     body {
         background-color: #0d0d0d;  /* 纯黑背景 */
         color: #00ff00;             /* 绿色字体 */
+        font-family: 'Ubuntu Mono', monospace;
     }
 </style>
 
