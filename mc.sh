@@ -2,7 +2,8 @@
 export HHH="$(pwd)"
 cd /storage/emulated/0/Android/data/com.mojang.minecraft/files/games/com.mojang/resource_packs/ZhangKunze
 zip -r ZhangKunze.mcpack.zip *
-mv -f ZhangKunze.mcpack.zip ~/ZhangKunze.github.io/minecraft/ZhangKunze.zip
+cp -f ZhangKunze.mcpack.zip ~/ZhangKunze.github.io/minecraft/ZhangKunze.zip
+rm -rf ZhangKunze.mcpack.zip
 cd $HHH
 git add .
 read -p "提交内容 " YYN
