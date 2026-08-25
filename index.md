@@ -14,13 +14,10 @@ layout: default
 
 There is my Website
 
-```C
-#include <stdio.h> //stdio.h，yes!
-```
 
 My GitHub: https://github.com/ZhangKunze
-
 My Codeberg: https://codeberg.org/ZKZLLPPAM
+
 
 This is test.
 
