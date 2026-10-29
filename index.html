@@ -2,59 +2,154 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ZKZLLPPAM's Personal Website</title>
+    <meta name="description" content="ZKZLLPPAM (Zhang Kunze) 的个人主页与开源仓库索引。">
     <style>
+        :root {
+            --bg: #0d0d0d;
+            --fg: #00ff00;
+            --fg-dim: #00aa00;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #0d0d0d;  /* 纯黑背景 */
-            color: #00ff00;             /* 绿色字体 */
-            font-family: 'Ubuntu Mono', monospace;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: ui-monospace, 'Cascadia Code', 'Ubuntu Mono', Consolas, monospace;
+            font-size: 1.1em;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
             text-align: center;
-            font-size: 1.2em;
+            margin-bottom: 2rem;
         }
+
         h1 {
-            color: #00ff00;
-            box-shadow: 0 0 20px #00ff00; /* 绿色LED灯 */
+            color: var(--fg);
+            box-shadow: 0 0 20px #00ff00;
+            font-size: 1.6em;
+            margin: 0;
         }
+
+        h2 {
+            color: var(--fg);
+            font-size: 1.2em;
+            margin-top: 2.5rem;
+            border-bottom: 1px dashed var(--fg-dim);
+            padding-bottom: 0.3em;
+        }
+
         a {
-            color: #00ff00;
+            color: var(--fg);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            background: var(--fg);
+            color: var(--bg);
+            text-decoration: none;
+        }
+
+        ul {
+            padding-left: 1.2em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        strong {
+            color: var(--fg);
+        }
+
+        .repo-desc {
+            color: var(--fg-dim);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--fg-dim);
+            font-size: 0.85em;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 1em;
+                padding: 1.2rem 0.8rem;
+            }
+            h1 {
+                font-size: 1.3em;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>ZKZLLPPAM's Personal Website</h1>
+    </header>
 
-    <h1>ZKZLLPPAM's Personal Website</h1>
-    <h3><em>Some thing are in there</em></h3>
+    <main>
+        <p>There is my Website</p>
 
-    <p>There is my Website</p>
+        <h2>Links</h2>
+        <ul>
+            <li>My GitHub: <a href="https://github.com/ZhangKunze">https://github.com/ZhangKunze</a></li>
+            <li>My Codeberg: <a href="https://codeberg.org/ZKZLLPPAM">https://codeberg.org/ZKZLLPPAM</a></li>
+            <li>About: <a href="about">/about</a></li>
+        </ul>
 
-    <p>My GitHub: <a href="https://github.com/ZhangKunze">https://github.com/ZhangKunze</a></p>
+        <h2>Download</h2>
+        <p><a href="https://zhangkunze.github.io/ZhangKunze.zip">Download My Bedrock Resource Pack</a></p>
 
-    <p>My Codeberg: <a href="https://codeberg.org/ZKZLLPPAM">https://codeberg.org/ZKZLLPPAM</a></p>
+        <h2>My repo:</h2>
+        <ul>
+            <li>
+                <strong>Zhang.bash</strong>
+                <span class="repo-desc">: A not good bash script version 1.0.</span>
+            </li>
+            <li>
+                <strong>Zhang.bash-v(version)</strong>
+                <span class="repo-desc">: A good bash script.</span>
+            </li>
+            <li>
+                <strong>nvidia-art</strong>
+                <span class="repo-desc">: A sarcasm NVIDIA Bash Script and a C Language file repo.</span>
+            </li>
+            <li>
+                <strong>teacher-art</strong>
+                <span class="repo-desc">: Our teacher is bad, the homework is very much. That like "nvidia-art".</span>
+            </li>
+            <li>
+                <strong>about_ai</strong>
+                <span class="repo-desc">: A repo of AI. It say: "AI plagiarism our code or text, we do this…".</span>
+            </li>
+            <li>
+                <strong>minecraft-not-good</strong>
+                <span class="repo-desc">: I don't know why I want to make this repo, but I don't how can remove it.</span>
+            </li>
+            <li>
+                <strong>ZhangKunze.github.io</strong>
+                <span class="repo-desc">: This repo is this website.</span>
+            </li>
+        </ul>
 
-    <p>About: <a href="https://zhangkunze.github.io/about">https://zhangkunze.github.io/about</a></p>
+        <p>This is test.</p>
+    </main>
 
-    <p><a href="https://zhangkunze.github.io/ZhangKunze.zip">Download My Bedrock Resource Pack</a></p>
-
-    <p>My repo:</p>
-
-    <p>Zhang.bash: A not good bash script version 1.0.</p>
-
-    <p>Zhang.bash-v(version): A good bash script.</p>
-
-    <p>nvidia-art: A sarcasm NVIDIA Bash Script and a C Language file repo.</p>
-
-    <p>teacher-art: Our teacher is bad, the homework is very much. That like "nvidia-art".</p>
-
-    <p>about_ai: A repo of AI. It say: "AI plagiarism our code or text, we do this…".</p>
-
-    <p>minecraft-not-good: I don't know why I want to make this repo, but I don't how can remove it.</p>
-
-    <p>ZhangKunze.github.io: This repo is this website.</p>
-
-    <p>This is test.</p>
-
-    <p>© Copyright 2026 Zhang Kunze.</p>
-
+    <footer>
+        © Copyright 2026 Zhang Kunze. This website is on GitHub.
+    </footer>
 </body>
 </html>
