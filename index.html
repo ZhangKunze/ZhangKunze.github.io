@@ -258,7 +258,7 @@
 
         // 硬编码命令表：key 是用户输入的命令，value 是输出（可以是字符串或函数）
         var COMMANDS = {
-            'help':   '可用命令: help, whoami, ls, date, echo, clear, about',
+            'help':   '可用命令: help, whoami, date, echo, clear, about',
             'whoami': 'zkzllppam (Zhang Kunze)',
             'date':   function () { return new Date().toString(); },
             'clear':  function () { output.innerHTML = ''; return ''; },
