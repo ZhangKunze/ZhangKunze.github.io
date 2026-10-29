@@ -84,6 +84,81 @@
             opacity: 0.7;
         }
 
+        /* ---------- Linux 终端样式区块 ---------- */
+        .terminal {
+            margin-top: 1.2rem;
+            border: 1px solid var(--fg-dim);
+            border-radius: 6px;
+            background: #000;
+            text-align: left;
+            overflow: hidden;
+            font-size: 0.9em;
+            box-shadow: 0 0 12px rgba(0, 255, 0, 0.25);
+            opacity: 1; /* footer 有 opacity:0.7，这里恢复 */
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: #1a1a1a;
+            border-bottom: 1px solid var(--fg-dim);
+        }
+
+        .terminal-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .terminal-bar .dot.red    { background: #ff5f56; }
+        .terminal-bar .dot.yellow { background: #ffbd2e; }
+        .terminal-bar .dot.green  { background: #27c93f; }
+
+        .terminal-bar .title {
+            margin-left: 8px;
+            color: var(--fg-dim);
+            font-size: 0.85em;
+        }
+
+        .terminal-body {
+            padding: 10px 12px;
+            color: var(--fg);
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .terminal-body .prompt {
+            color: var(--fg);
+        }
+
+        /* 终端输入行 */
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            padding: 0 12px 10px;
+            color: var(--fg);
+        }
+
+        .terminal-input-line .prompt {
+            white-space: pre;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--fg);
+            font: inherit;
+            caret-color: var(--fg);
+            padding: 0;
+            margin-left: 0.3em;
+        }
+
         @media (max-width: 480px) {
             body {
                 font-size: 1em;
@@ -149,7 +224,108 @@
     </main>
 
     <footer>
-        © Copyright 2026 Zhang Kunze. This website is on GitHub.
+        <div class="copyright">© Copyright 2026 Zhang Kunze. This website is on GitHub.</div>
+
+        <hr style="border: none; border-top: 1px dashed var(--fg-dim); margin: 1rem 0 0;">
+
+        <div class="terminal">
+            <div class="terminal-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="title">zkzllppam@github: ~</span>
+            </div>
+            <div class="terminal-body" id="termOutput">
+                <div><span class="prompt">zkzllppam@github:~$</span> echo "Hello, World!"</div>
+                <div>Hello, World!</div>
+                <div><span class="prompt">zkzllppam@github:~$</span> uname -a</div>
+                <div>Linux zkzllppam 6.0.0-generic #1 SMP x86_64 GNU/Linux</div>
+                <div><span class="prompt">zkzllppam@github:~$</span> help</div>
+                <div>可用命令: help, whoami, date, echo, clear, about</div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">zkzllppam@github:~$&nbsp;</span>
+                <input type="text" class="terminal-input" id="termInput" autocomplete="off" spellcheck="false" autofocus>
+            </div>
+        </div>
     </footer>
+
+    <script>
+    (function () {
+        var output = document.getElementById('termOutput');
+        var input  = document.getElementById('termInput');
+        var PROMPT = 'zkzllppam@github:~$';
+
+        // 硬编码命令表：key 是用户输入的命令，value 是输出（可以是字符串或函数）
+        var COMMANDS = {
+            'help':   '可用命令: help, whoami, ls, date, echo, clear, about',
+            'whoami': 'zkzllppam (Zhang Kunze)',
+            'date':   function () { return new Date().toString(); },
+            'clear':  function () { output.innerHTML = ''; return ''; },
+            'about':  'ZKZLLPPAM 的个人主页。GitHub: github.com/ZhangKunze  Codeberg: codeberg.org/ZKZLLPPAM'
+        };
+
+        function printLine(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            output.appendChild(div);
+        }
+
+        function printPromptLine(cmd) {
+            var div = document.createElement('div');
+            var span = document.createElement('span');
+            span.className = 'prompt';
+            span.textContent = PROMPT + ' ';
+            div.appendChild(span);
+            div.appendChild(document.createTextNode(cmd));
+            output.appendChild(div);
+        }
+
+        function run(raw) {
+            var cmd = raw.trim();
+            printPromptLine(cmd);
+
+            if (cmd === '') return;
+
+            // echo 单独处理，支持带参数
+            if (cmd === 'echo' || cmd.indexOf('echo ') === 0) {
+                printLine(cmd.slice(5));
+                return;
+            }
+
+            if (Object.prototype.hasOwnProperty.call(COMMANDS, cmd)) {
+                var val = COMMANDS[cmd];
+                var res = (typeof val === 'function') ? val() : val;
+                if (res !== '') printLine(res);
+            } else {
+                // 未匹配到硬编码命令，报 not found
+                printLine(cmd + ': command not found');
+            }
+        }
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                var value = input.value;
+                input.value = '';
+                run(value);
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+
+        // 点击终端任意位置聚焦输入框
+        var term = document.querySelector('.terminal');
+        if (term) {
+            term.addEventListener('click', function () {
+                input.focus();
+            });
+        }
+
+        // 页面加载后自动聚焦
+        window.addEventListener('load', function () {
+            input.focus({ preventScroll: true });
+            window.scrollTo(0, 0);
+        });
+    })();
+    </script>
 </body>
 </html>
